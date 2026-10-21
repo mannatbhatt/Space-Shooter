@@ -3,10 +3,10 @@ import Phaser from 'phaser';
 import BootScene from './scenes/BootScene.js';
 import MenuScene from './scenes/MenuScene.js';
 import SetupScene from './scenes/SetupScene.js';
+import GameScene from './scenes/GameScene.js';
 
 import './style.css';
 
-// Phaser game configuration
 const config = {
   type: Phaser.AUTO,
 
@@ -25,11 +25,11 @@ const config = {
   scene: [
     BootScene,
     MenuScene,
-    SetupScene
+    SetupScene,
+    GameScene
   ]
 };
 
-// Initialize the game
 const game = new Phaser.Game(config);
 
 export default game;
