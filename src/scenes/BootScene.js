@@ -1,8 +1,11 @@
 import Phaser from 'phaser';
 
 export default class BootScene extends Phaser.Scene {
+
   constructor() {
-    super('BootScene');
+    super({
+      key: 'BootScene'
+    });
   }
 
   create() {
@@ -10,8 +13,9 @@ export default class BootScene extends Phaser.Scene {
 
     this.cameras.main.setBackgroundColor('#050816');
 
-    // Create twinkling stars
+    // Animated galaxy background
     for (let i = 0; i < 120; i++) {
+
       const star = this.add.circle(
         Phaser.Math.Between(0, width),
         Phaser.Math.Between(0, height),
@@ -30,19 +34,29 @@ export default class BootScene extends Phaser.Scene {
     }
 
     // Game title
-    this.add.text(width / 2, height / 2 - 100, 'SPACE SHOOTER', {
-      fontFamily: 'Arial',
-      fontSize: '52px',
-      fontStyle: 'bold',
-      color: '#00eaff'
-    }).setOrigin(0.5);
+    this.add.text(
+      width / 2,
+      height / 2 - 100,
+      'SPACE SHOOTER',
+      {
+        fontFamily: 'Arial',
+        fontSize: '52px',
+        fontStyle: 'bold',
+        color: '#00eaff'
+      }
+    ).setOrigin(0.5);
 
     // Loading message
-    this.add.text(width / 2, height / 2 - 30, 'PREPARING YOUR MISSION...', {
-      fontFamily: 'Arial',
-      fontSize: '16px',
-      color: '#ffffff'
-    }).setOrigin(0.5);
+    this.add.text(
+      width / 2,
+      height / 2 - 30,
+      'PREPARING YOUR MISSION...',
+      {
+        fontFamily: 'Arial',
+        fontSize: '16px',
+        color: '#ffffff'
+      }
+    ).setOrigin(0.5);
 
     // Loading bar background
     this.add.rectangle(
@@ -62,12 +76,13 @@ export default class BootScene extends Phaser.Scene {
       0x00eaff
     ).setOrigin(0, 0.5);
 
-    // Animate loading bar
+    // Loading animation
     this.tweens.add({
       targets: progressBar,
       width: 310,
       duration: 2500,
       ease: 'Linear',
+
       onComplete: () => {
         this.scene.start('MenuScene');
       }
